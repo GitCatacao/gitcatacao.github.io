@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+<title>GitCatacao's GitHub WebSite</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<link href="/useful.css" rel="stylesheet" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>html, body { background-color: black; color: white; }</style>
+</head>
+
+
+<body class="text-center">
+
+
+
+
+
+
+	
+<div class="header-zone my-4"><h1 class="mb-0 pb-0"><a style="color:lime;" class="text-decoration-none" href="https://gitcatacao.github.io">GitCatacao's GitHub WebSite</a></h1><p class="fw-bold" style="font-size:78.88%; color: #ff918f;"><i>BoloBolo Crew</i></p></div>
+
+
+
+
+<div style="position: relative; padding-top:10px; text-align:center;">
+<button class="btn btn-primary" type="button" onclick="window.location.href = './';">./</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '../';">../</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '/';">/</button>
+</div>
+
+
+<div class="container">
+<p class="mt-4">Explaination: <small>This is a beta for try to getting all last level children from any type of HTML code, even if written incorrectly, using the JavaScript DOMParser</small></p>
+</div>
+
+
+	
+<h2 class="mb-2">Get the last level children</h2>
+	
+	
+
+<script>
+$(document).ready(function(){
+	$("#content").focus();
+	$('#formsubmit').click(function(){
+		console.log( 'Last children:' );
+		var htmlString; htmlString = $('#content').val();
+		console.log(getLastLevels(htmlString));
+		alert( 'Printed in consolle' );
+	})	
+})
+
+
+
+
+
+
+//(LAST CHILDREN START) ---------------------------------------------
+function getLastLevels(htmlString){
+	var HTMLDoc = (new DOMParser()).parseFromString(htmlString, "text/html");
+	elements = HTMLDoc.body.children;
+	var arrayLastChildren = [];		
+	getLastLevelsRecurive(elements);
+	function getLastLevelsRecurive(elements){
+		for (var i = 0; i < elements.length; i++){
+			element = elements[i];
+			var siblingCounter = 0;
+			var sonsOfSibling = 0;
+			var siblingChildsP = 0;
+			var siblingChildsN = 0;
+			
+			if (element.children.length == 0) {
+				// if next element exists
+				if ( element.nextElementSibling != null ) {
+					var thisNext = element.nextElementSibling;	
+					while ( thisNext != null ) {
+						sonsOfSibling += thisNext.children.length;
+						siblingChildsN = getLastLevelsRecurive(thisNext.children.length);
+						siblingCounter++;						
+						thisNext = thisNext.nextElementSibling;			
+					}
+				}
+				if ( sonsOfSibling > 0 ) {
+					thisBrothersNum = siblingChildsP + siblingChildsN;
+				} else if ( siblingChildsP == 0 && siblingChildsN == 0 ) {
+					arrayLastChildren.push(element);
+				} else {																										   
+					arrayLastChildren.push(element);
+				}
+			} else { getLastLevelsRecurive(element.children); }
+		}
+	} return arrayLastChildren;
+}
+//(LAST CHILDREN END) -----------------------------------------------
+</script>
+
+
+
+
+
+
+
+
+
+
+	
+<textarea id="content" name="content" required="" style="width: calc(100vw - 60px); max-width: 600px; height: 500px; display:inline-block; margin: 0; padding: 0; resize: none;">
+## EXAMPLE HTML CODE PURPOSEFULLY BADLY WRITTEN
+<div A="A">
+	<p p="p0">Not nested</p>
+	<div AA="AA">
+		txt
+		<a a="a">txt</a>
+		<br><br/>
+		<div AAA="AAA">
+			<div AAAA="AAAA">
+				txt
+				<img attribx src="srcvl" >
+			</div>
+		</div>
+	</div>
+	TSTTXTA
+	<div A2="A2">
+		<p p="p00">txt</p>
+		<div AA2="AA2">txt</div>
+	</div>
+</div>
+<div B="B">
+	<div BN="BN">
+		<p p="p1">nestedp2</p>
+	</div>
+	txt
+</div>
+</textarea>
+<div style="clear:both; margin:20px;"></div>
+<button id="formsubmit" class="btn btn-primary" type="button" style="width: calc(100vw - 60px); max-width: 600px;">Get latest children</button>
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+<p class="my-4"><small>It works recursively and gets the children contained in the last levels of the HTML code, finding the last levels and taking them along with their siblings.<br>For now it's just a beta version. If and when there's time I'll work on it to improve it further.</small></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+<div class="footer" style="margin-top: 100px;">
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	<p class="col-md-12 mb-0 text-body-secondary">Made with ❤️ by my Dog</p>
+	<p class="col-md-12 mb-0 text-body-secondary">© <script>document.write(new Date().getFullYear())</script> The Mother of The Mother Company, Inc</p>
+    </footer>
+  </div>
+</div>
+<div style="position: fixed; top: 1px; right: 12px;"><a href="https://github.com/gitcatacao" style="color:lime; font-size: 10px; text-decoration:none;" title="Link to GitHub">GitHub</a></div>
+</body>
+</html>

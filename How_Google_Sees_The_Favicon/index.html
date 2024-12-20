@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+<title>GitCatacao's GitHub WebSite</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<link href="/useful.css" rel="stylesheet" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>html, body { background-color: black; color: white; }</style>
+</head>
+
+
+<body class="text-center">
+
+
+
+
+
+
+	
+<div class="header-zone my-4"><h1 class="mb-0 pb-0"><a style="color:lime;" class="text-decoration-none" href="https://gitcatacao.github.io">GitCatacao's GitHub WebSite</a></h1><p class="fw-bold" style="font-size:78.88%; color: #ff918f;"><i>BoloBolo Crew</i></p></div>
+
+
+
+
+<div style="position: relative; padding-top:10px; text-align:center;">
+<button class="btn btn-primary" type="button" onclick="window.location.href = './';">./</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '../';">../</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '/';">/</button>
+</div>
+
+
+<style>input { font-size: x-large; } input[type="text"] { padding: 4px 10px; }</style>
+<br><br>
+
+
+
+
+
+
+
+
+<script>function openfavicon() { if (document.getElementById('domaininput').value == undefined || document.getElementById('domaininput').value == '') { return 0; } window.open('https://www.google.com/s2/favicons?domain='+document.getElementById('domaininput').value, '_blank'); }</script>
+
+
+
+	
+<h2 class="mb-2">How Google Sees The Favicon</h2>
+	
+	
+	
+	
+<input type="text" id="domaininput" name="domaininput" style="width:50%; max-width: 500px; text-align:center; display:inline-block;" placeholder="https://subdomain.domain.com" value=""><br><br>
+<input id="formsumbmitbutton" class="btn btn-success" type="button" style="width:200px;" value="GO" onclick="openfavicon()">
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+<script>
+$(document).ready(function() {
+	$("#domaininput").focus();
+	
+	$('#domaininput').keypress(function (e) {
+ 		var key = e.which;
+ 		if(key == 13) {
+			$('#formsumbmitbutton').click();
+			return false;  
+		}
+	});
+	console.log('Page loaded')
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<div class="footer" style="margin-top: 100px;">
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	<p class="col-md-12 mb-0 text-body-secondary">Made with ❤️ by my Dog</p>
+	<p class="col-md-12 mb-0 text-body-secondary">© <script>document.write(new Date().getFullYear())</script> The Mother of The Mother Company, Inc</p>
+    </footer>
+  </div>
+</div>
+<div style="position: fixed; top: 1px; right: 12px;"><a href="https://github.com/gitcatacao" style="color:lime; font-size: 10px; text-decoration:none;" title="Link to GitHub">GitHub</a></div>
+</body>
+</html>
