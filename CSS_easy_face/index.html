@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head><title>CSS Easy Face Resizable On Screen</title>
+		<style>
+			:root {
+			  --block-h: 50vh;
+			}
+	
+			.center {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			}
+
+			.centercenter {
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: center;
+			}
+
+			body { background-color: black; margin:0; padding:0; text-align:center; vertical-align: middle; height: 100vh;}
+			.face-container {
+				height: var(--block-h);
+				width: calc(110/100 * var(--block-h));
+			}
+	
+			.centercenter { width: 80%; height: 80%; background-color: red; }
+			.red { width: 50%; height: 50%; background-color: magenta; }
+			.yellow { width: 83%; height: 50%; background-color: #FFFF00; }
+			.black { width: 40%; height: 40%; background-color: #000000; }
+		</style>
+	</head>
+	<body class="center">
+		<div class="center face-container">
+		
+			<div class="centercenter">
+				<div class="black center">
+					<div class="yellow center">
+						<div class="red center">
+						</div>
+					</div>
+				</div>
+				<div class="black center">
+					<div class="yellow center">
+						<div class="red center">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div style="position: fixed; top: 10px; right: 10px;"><a href="/" style="font-size: 10px;">Back To Site</a></div>
+	</body>
+</html>
