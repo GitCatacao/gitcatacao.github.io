@@ -4,3 +4,22 @@ iframe[src*="youtube"] {
   width: 100%;
   height: 100%;
 }
+
+pre.iscode {
+		padding: 0px;
+		margin: 0px;
+		padding-left: 20px;
+		overflow-x: auto;
+		text-align: left;
+		border-radius: 10px;
+		font-family: 'Century Gothic';
+		letter-spacing: .5px;
+		font-size: 0.688em;
+		background: #414449;
+		color: #b3bccc;
+		border-left: 10px solid #575757;
+}
+pre.iscode code {
+		margin: 0;
+		padding: 0;
+}
