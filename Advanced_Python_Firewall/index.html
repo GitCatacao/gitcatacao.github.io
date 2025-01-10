@@ -132,12 +132,22 @@ $ chmod +x python_advanced_firewall.py
 
 
 
+<p class="my-4">When the firewall is running on your system you should see output similar to this.</p>
 
+<pre class="iscode"><code>
+Firewall is running. Monitoring connections...
 
+Allowed: 192.168.1.100:80 (status: ESTABLISHED)
+Blocked: 192.168.1.200:22 (status: ESTABLISHED)
+Terminated process 12345 to block connection.
+Allowed: 127.0.0.1:8000 (status: LISTEN)
+Blocked: 203.0.113.42:443 (status: ESTABLISHED)
+Terminated process 67890 to block connection.
+Allowed: 10.0.0.5:8080 (status: ESTABLISHED)
 
+</code></pre>
 
-
-
+<p class="my-4">Now your system is protected 🫡. Good work 👋.</p>
 
 
 
