@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+<title>Advanced Python Firewall - GitCatacao's GitHub WebSite</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<link href="/useful.css" rel="stylesheet" />
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>html, body { background-color: black; color: white; }</style>
+</head>
+
+
+<body class="text-center">
+<div class="container">
+
+
+
+
+
+	
+<div class="header-zone my-4"><h1 class="mb-0 pb-0"><a style="color:lime;" class="text-decoration-none" href="https://gitcatacao.github.io">GitCatacao's GitHub WebSite</a></h1><p class="fw-bold" style="font-size:78.88%; color: #ff918f;"><i>BoloBolo Crew</i></p></div>
+
+
+
+
+<div class="easy_site_nav" style="position: relative; padding-top:10px; text-align:center;">
+<button class="btn btn-primary" type="button" onclick="window.location.href = './';">./</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '../';">../</button> <button class="btn btn-primary" type="button" onclick="window.location.href = '/';">/</button>
+</div>
+<style>.easy_site_nav input[type="button"] { font-size: x-large; }</style>
+
+
+<br><br>
+
+
+
+
+
+
+
+
+	
+<h2 class="mb-2">Advanced Python Firewall</h2>
+<p class="mb-0">🐍 Below is an example of a advanced firewall implemented in Python.</p>
+<p class="mb-0">This script uses the socket and psutil modules to monitor and control network connections.</p>
+<p class="mb-4">It allows or blocks traffic based on predefined rules.</p>
+
+	
+	
+	
+
+
+
+
+<pre class="iscode"><code>
+#!/usr/bin/env python3
+import socket
+import psutil
+
+# Define firewall rules (Allow or Block IPs and Ports)
+firewall_rules = {
+    "allow": [("192.168.1.100", 80), ("127.0.0.1", 8000)],  # Example: Allow localhost and a specific IP
+    "block": [("192.168.1.200", 22)],  # Example: Block SSH access to a specific IP
+}
+
+def is_allowed_connection(ip, port):
+    """
+    Checks if the given IP and port match the allow or block rules.
+    """
+    if (ip, port) in firewall_rules["block"]:
+        return False
+    if (ip, port) in firewall_rules["allow"]:
+        return True
+    # Default policy: Deny everything not explicitly allowed
+    return False
+
+def monitor_connections():
+    """
+    Monitors active network connections and enforces firewall rules.
+    """
+    print("Firewall is running. Monitoring connections...\n")
+    while True:
+        # Iterate through all current connections
+        for conn in psutil.net_connections(kind="inet"):
+            laddr = conn.laddr  # Local address (IP, port)
+            raddr = conn.raddr  # Remote address (IP, port)
+            status = conn.status
+
+            if raddr:  # Only monitor connections with a remote address
+                remote_ip, remote_port = raddr
+                if not is_allowed_connection(remote_ip, remote_port):
+                    print(f"Blocked: {remote_ip}:{remote_port} (status: {status})")
+                    terminate_connection(conn.pid)
+                else:
+                    print(f"Allowed: {remote_ip}:{remote_port} (status: {status})")
+
+def terminate_connection(pid):
+    """
+    Terminates a process by its PID.
+    """
+    try:
+        psutil.Process(pid).terminate()
+        print(f"Terminated process {pid} to block connection.")
+    except Exception as e:
+        print(f"Error terminating process {pid}: {e}")
+
+if __name__ == "__main__":
+    try:
+        monitor_connections()
+    except KeyboardInterrupt:
+	        print("\nFirewall stopped.")
+	
+</code></pre>
+
+
+
+<p class="mt-4">First install <code>psutil</code> and make the script executable.</p>
+<p class="mb-4">So write in your terminal</p>
+<pre class="iscode"><code>
+$ pip install psutil
+$ chmod +x python_advanced_firewall.py
+
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+	
+
+
+
+
+
+
+</div><!-- .container end -->
+
+
+<div class="footer" style="margin-top: 100px;">
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+	<p class="col-md-12 mb-0 text-body-secondary">Made with ❤️ by my Dog</p>
+	<p class="col-md-12 mb-0 text-body-secondary">© <script>document.write(new Date().getFullYear())</script> The Mother of The Mother Company, Inc</p>
+    </footer>
+  </div>
+</div>
+<div style="position: fixed; top: 1px; right: 12px;"><a href="https://github.com/gitcatacao" style="color:lime; font-size: 10px; text-decoration:none;" title="Link to GitHub">GitHub</a></div>
+</body>
+</html>
